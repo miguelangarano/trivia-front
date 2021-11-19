@@ -1,0 +1,41 @@
+
+<div class="row h-100 position-relative relative">
+    <div class="col-3 alignitems">
+        
+        <app-option-button [buttonText]="'Ir a tabla de posiciones'" [className]="'btn btn-success'" (externalButtonAction)="goToPositions()"></app-option-button>
+
+    </div>
+    <div class="col-6 content relative">    
+        <h1>Hola, {{nameUser}}</h1>
+        <div class="row">
+            <app-logo-img></app-logo-img>
+        </div>
+        
+        <div class="row size1">
+            <img src="assets/check-circle-solid.svg" class="iconsShow" alt="" *ngIf="correctAnswer==1">
+            <img src="assets/times-circle-solid.svg" class="iconsShow" alt="" *ngIf="correctAnswer==0"> 
+            <p *ngIf="correctAnswer==-1">
+                {{gameService.currentQuestion}}
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="options">
+                <div *ngFor="let option of gameService.answerOptions" >
+                    <app-answer-button *ngIf="option!= null"  [answer]="option" (buttonSelected)="selectAnswer($event)" > </app-answer-button>
+                </div>
+                
+
+            </div>
+        </div>
+        
+        <div class="row">
+            <app-option-button [buttonText]="'Siguiente'" (externalButtonAction)="nextQuestion()" [className]="'btn btn-secondary'"></app-option-button>
+        </div>
+        
+        
+    </div>
+    <div class="col-3 alignitems">
+        <app-option-button [buttonText]="'Cerrar Sesión'" (externalButtonAction)="signOut()" [className]="'btn btn-danger'"></app-option-button>
+    </div>
+</div>

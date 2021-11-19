@@ -1,0 +1,27 @@
+<div class="row h-100 position-relative relative">
+    <div class="col-4">
+        <app-option-button [buttonText]="'Volver'" [className]="'btn btn-secondary alignitems2'" (externalButtonAction)="returnToGame()"></app-option-button>
+    </div>
+    <div class="col-4 content">
+        
+        <div class="row">
+            <app-logo-img></app-logo-img>
+        </div>
+        
+        <div class="row">
+            <h3>Tabla de posiciones</h3 >
+        </div>
+        
+        <div class="row">
+            <div class="options">
+                <app-pos-person-button *ngFor="let position of positionService.gamersPosition" [nameGamer]="position.name" [pointsGamer]="position.score" [positionGamer]="position.position" ></app-pos-person-button>
+
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="col-4 alignitems">
+        <app-option-button [buttonText]="'Cerrar Sesión'" (externalButtonAction)="signOut()" [className]="'btn btn-danger'"></app-option-button>
+    </div>
+</div>
